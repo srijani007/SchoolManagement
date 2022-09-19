@@ -1,0 +1,82 @@
+<!-- <p>login-comp works!</p> -->
+
+<div class="container">
+  <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
+    <div style='margin-top: 8%;'>
+      <h1> Welcome to Online Classroom!!</h1>
+      <div>
+        <div class='card-body'>
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="form-group row">
+                <div class='col-md-3'></div>
+                <div class='col-md-2'>
+                  <label>User Name: </label>
+                </div>
+                <div class='col-md-4'>
+                  <input type="text" class="form-control" placeholder="Enter UserName" name="userName"
+                    [(ngModel)]="creds.UserName" required #username="ngModel">
+                  <div class="alert alert-danger" role="alert" *ngIf="f.touched && username.invalid">
+                    Username is required!
+                  </div>
+                </div>
+                <div class='col-md-3'></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="form-group row">
+                <div class='col-md-3'></div>
+                <div class='col-md-2'>
+                  <label>Password: </label>
+                </div>
+                <div class='col-md-4'>
+                  <input type="password" class="form-control" placeholder="Enter Password" name="userPassword"
+                    [(ngModel)]="creds.Password" required #password="ngModel">
+                  <div class="alert alert-danger" role="alert" *ngIf="f.touched && password.invalid ">
+                    <div *ngIf="password.errors?.['required']">Password is required</div>
+                    <div *ngIf="password.errors?.['minlength']">
+                      Password must be at least 6 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='col-md-3'></div>
+            </div>
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="form-group row">
+              <div class='col-md-5'></div>
+              <div class='col-md-4'>
+                <button style="width: 30%;" class="btn btn-primary" (click)="onSubmit()"> Login                 
+                </button>
+              </div>
+              <div class='col-md-3'></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="f.submitted && isLoginFailed" >
+              Login failed: {{ errorMessage }}
+            </div>
+          </div>       
+          <!-- <div class="row mt-3">
+            <div class="form-group row">
+              <div class='col-md-5'></div>
+              <div class="col-md-5">
+                <p>New User? <a [routerLink]="['/register']">Register</a>.</p>
+              </div>
+              <div class='col-md-3'></div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,172 @@
+<!-- <p>enrolled works!</p> -->
+<!-- <p>course works!</p> -->
+<div class="container" *ngIf="isenrolledforadmin == 'admin' || isenrolledforadmin == 'Admin' "><br />
+    <div style='margin-top: 8%;'>
+        <h1>Enrollments</h1>
+        <div>
+            <br />
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th> Course Id </th>
+                            <th> User Id </th>
+                            <th> User Role</th>
+                            <th> Startdate </th>
+                            <th> Enddate </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let res of courseResponse">
+                            <!-- <td><img [src]="users.logo" [title]="users.book_Title" [style.width.px]="iconWidth"
+                                [style.margin.px]="imageMargin" /></td> -->
+                            <td>{{res.idCourse}}</td>
+                            <td>{{res.idUser}}</td>
+                            <td>{{res.roleId}}</td>
+                            <td>{{res.startdate}}</td>
+                            <td>{{res.enddate}}</td>
+                            <!-- <td
+                                *ngIf="roleTag == 'student' || roleTag == 'Student' || roleTag == 'teacher' || roleTag == 'Teacher'">
+                                <button style="color:black;background-color:transparent;
+                                background-repeat:no-repeat; text-decoration: underline;
+                                border: none;" (click)="onlaunch(res)">
+                                    Launch
+                                </button>
+                            </td> -->
+
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <br>
+            <div class="text-center">
+                <button class="btn btn-primary " (click)="back()">Back</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf=" isenrolledforteacher == true  "><br />
+    <div style='margin-top: 8%;'>
+        <h1>Enrollments</h1>
+        <div>
+            <br />
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th> Course Id </th>
+                            <th> User Id </th>
+                            <th> User Role</th>
+                            <th> Startdate </th>
+                            <th> Enddate </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let res of courseResponse">
+                            <!-- <td><img [src]="users.logo" [title]="users.book_Title" [style.width.px]="iconWidth"
+                                [style.margin.px]="imageMargin" /></td> -->
+                            <td>{{res.IdCourse}}</td>
+                            <td>{{res.IdUser}}</td>
+                            <td>{{res.RoleId}}</td>
+                            <td>{{res.Startdate}}</td>
+                            <td>{{res.Enddate}}</td>
+                            <!-- <td
+                                *ngIf="roleTag == 'student' || roleTag == 'Student' || roleTag == 'teacher' || roleTag == 'Teacher'">
+                                <button style="color:black;background-color:transparent;
+                                background-repeat:no-repeat; text-decoration: underline;
+                                border: none;" (click)="onlaunch(res)">
+                                    Launch
+                                </button>
+                            </td> -->
+
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <br>
+            <div class="text-center">
+                <button class="btn btn-primary " (click)="back()">Back</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="isenrolled"><br />
+    <div style='margin-top: 8%;'>
+        <h1>Courses</h1>
+        <div>
+            <br />
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th> Course Id </th>
+                            <th> Title </th>
+                            <th> Subject </th>
+                            <th> Grade Level </th>
+                            <th> </th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let res of courseResponse">
+                            
+                            <td *ngIf="roleTag == 'teacher' || roleTag == 'Teacher'" style=" text-decoration: underline;" (click)="getenrolls(res)">{{res.Id}}</td>
+                            <td>{{res.Id}}</td>
+                            <td>{{res.Title}}</td>
+                            <td>{{res.Subject}}</td>
+                            <td>{{res.GradeLevel}}</td>
+                            <td
+                                *ngIf="roleTag == 'student' || roleTag == 'Student' || roleTag == 'teacher' || roleTag == 'Teacher'">
+                                <button style="color:black;background-color:transparent;
+                                background-repeat:no-repeat; text-decoration: underline;
+                                border: none;" (click)="onlaunch(res)">
+                                    Launch
+                                </button>
+                            </td>
+
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <br>
+            <div class="text-center">
+                <button class="btn btn-primary " (click)="back()">Back</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="onlaunchbtn">
+    <div style='margin-top: 8%;'></div>
+    <div class="text-dark">
+        <h1>Content</h1>
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th> Subject Area </th>
+                    </tr>
+                </thead>
+                <br>
+                <tbody>                    
+                        <td>{{displaysubjectarea}}</td>                      
+                </tbody>
+                <thead class="table-dark">
+                    <tr>
+                        <th> Description </th>
+                    </tr>
+                </thead>
+                <br>
+                <tbody>                    
+                        <td>{{displaydescription}}</td>                      
+                </tbody>              
+            </table>
+            <div class="text-center">
+                <button class="btn btn-primary" (click)="onBack()">
+                    Back
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

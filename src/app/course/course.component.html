@@ -1,0 +1,182 @@
+<!-- <p>course works!</p> -->
+<div class="container"><br />
+    <div style='margin-top: 8%;'>
+        <h1>Courses</h1>
+        <div>
+            <!-- <div class='card-body'>
+                <div class="row mt-3">
+                    <div class="form-group row">
+                        <div class='col-md-3'></div>
+                        <div class='col-md-2'>
+                            <label for="bookpublisher">Publishers: </label>
+                        </div>
+                        <div class='col-md-4'>
+                            <select style='width: 50%;' id="type" [(ngModel)]="bookSearch.Publisher"
+                                [ngModelOptions]="{standalone: true}">
+                                <option *ngFor="let test1 of publishers" [value]="test1.publisher">{{test1.publisher}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class='col-md-3'></div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="form-group row">
+                        <div class='col-md-5'></div>
+                        <div class='col-md-4'>
+                            <button style="width: 30%;" class="btn btn-primary" (click)="SearchBooks()"> Search -->
+                                <!-- old{{showIcon? "Hide" : "Show" }} Book Images -->
+                            <!-- </button>
+                        </div>
+                        <div class='col-md-3'></div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div>
+            </div> -->
+            <br/>
+            <div class="table-responsive">
+                <table class="table"> 
+                <!-- *ngIf="users.length "&& showGrid"> -->
+                    <thead class="table-dark">
+                        <tr> 
+                            <th> Course Id </th>   
+                            <th> Title </th>
+                            <th> Description </th>                         
+                            <th> Subject </th>                            
+                            <th> Subject Area </th>
+                            <th> Grade Level </th>
+                            <th>  </th>
+                            <th>  </th>
+                        </tr>
+                    </thead>
+                   <tbody>
+                        <tr *ngFor="let course of courses"> 
+                            <td>{{course.id}}</td>
+                            <td>{{course.title}}</td>
+                            <td>{{course.description}}</td>
+                            <td>{{course.subject}}</td>
+                            <td>{{course.subjectArea}}</td>
+                            <td>{{course.gradeLevel}}</td>
+                            <td *ngIf="roleTag == 'Admin' || roleTag == 'admin'">                                
+                                <a href="['/createcourse',course.id]"  style="color:black" [routerLink]="['/createcourse',course.id]">
+                                    Update
+                                </a>                               
+                            </td>
+                            <td *ngIf="roleTag == 'Admin' || roleTag == 'admin'">
+                                <a href="/enroll" style="color:black "  (click)="onEnroll(course)">
+                                    Enroll
+                                </a>
+                            </td>
+                          <!--<td>
+                                {{users.price}}
+                                <button class="btn btn-primary" (click)="openModal(template,users)">
+                                    Buy
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>-->
+                </table>
+            </div>
+            <br>
+            <br>
+            <div class="text-center">
+                <button class="btn btn-primary " (click)="back()">Back</button>
+            </div>
+      
+            <!-- <div> -->
+                <!-- <div class="form-group">
+                    <label for="">User Name:</label>
+                    <input type="text" placeholder="Enter UserName" name="userName" [(ngModel)]="paymentDtls.UserName" required>
+                  </div> -->
+
+                <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button> -->
+
+                <!-- <ng-template #template>
+                    <div class="modal-header">
+                        <h4 class="modal-title pull-left">Payment Confirmation</h4>
+                        <button type="button" class="btn-close close pull-right" aria-label="Close"
+                            (click)="modalRef?.hide()">
+                            <span aria-hidden="true" class="visually-hidden">
+
+                            </span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <div class="form-group">
+                                <div class="row mt-3">
+                                    <div class="form-group row">
+                                        <div class='col-md-2'></div>
+                                        <div class='col-md-3'>
+                                            <label for="bookpublisher">Email Id: </label>
+                                        </div>
+                                        <div class='col-md-5'>
+                                            <input *ngIf="showEmailField" [disabled]="true" type="text"  style="width: 130%;" placeholder="Enter EmailId" name="userEmailid"
+                                                [(ngModel)]="userEmailId" required>
+                                                <input *ngIf="emptyshowEmailField" type="text"  style="width: 130%;" placeholder="Enter EmailId" name="userEmailid"
+                                                [(ngModel)]="userEmailId" required>
+                                        </div>
+                                        <div class='col-md-2'></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="form-group row">
+                                    <div class='col-md-2'></div>
+                                    <div class='col-md-5'>
+                                        <button class="btn btn-primary" (click)="proceedPayment()">Proceed
+                                            Payment</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-primary" (click)="modalRef?.hide()" >Cancel</button>
+                                    </div>
+                                    <div class='col-md-2'></div>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="showSuccMsg">
+                                <div class="row mt-3">
+                                    <div class="form-group row"> -->
+                                        <!-- <div class='col-md-4'></div> old-->
+                                        <!-- <div class='col-md-12'>
+                                            <p style="width: 110%;" class="alert alert-success">
+                                                <strong>Payment Successfull!</strong>
+                                            </p>
+                                        </div> -->
+                                        <!-- <div class='col-md-2'></div>old -->
+                                    <!-- </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="row mt-3">
+                                    <div class="form-group row"> -->
+                                        <!-- <div class='col-md-4'></div>old -->
+                                        <!-- <div class='col-md-12'>
+                                            <p *ngIf="showFailedMsg" style="width: 110%;" class="alert alert-danger">
+                                                <strong>Payment Failed!</strong>
+                                            </p>
+                                            <p *ngIf="showErrMsg" style="width: 110%;" class="alert alert-danger">
+                                                <strong>This book was already bought by you!!</strong>
+                                            </p>
+                                        </div> -->
+                                        <!-- <div class='col-md-2'></div> -->
+                                    <!-- </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="form-group row">
+                                    <div class='col-md-5'></div>
+                                    <div class="col-md-5">
+                                        <p> <a (click)="modalRef?.hide()" (click)="OpenPaymentWindow(paymentDtls)" [routerLink]="['/payment']">Payment History</a>.</p>
+                                    </div>
+                                    <div class='col-md-3'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </ng-template>-->
+            <!-- </div> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<!-- <p>admin works!</p> -->
+<div>
+    <br />
+    <div style='margin-top: 5%;'>
+        <div *ngIf="adminTag == 'true'" class="container">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table-grey">
+                        <tr>
+                            <th type="link" (click)="userPage()" >Users  &nbsp; &nbsp;                          
+                                <span id="boot-icon" class="bi bi-person-circle" style="font-size: 42px; color: rgb(0, 0, 0); -webkit-text-stroke-width: 2.7px;padding-left: 90%; "></span>                  
+                        </th>
+                        </tr>
+                        <tr>
+                            <th type="link" (click)="coursePage()">Courses
+                                <span id="boot-icon" class="bi bi-book" style="font-size: 42px; color: rgb(0, 0, 0); -webkit-text-stroke-width: 3.7px; padding-left: 90%;" ></span>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
