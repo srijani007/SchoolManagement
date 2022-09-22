@@ -109,13 +109,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let res of courseResponse">
-                            
-                            <td *ngIf="roleTag == 'teacher' || roleTag == 'Teacher'" style=" text-decoration: underline;" (click)="getenrolls(res)">{{res.Id}}</td>
+                        <tr *ngFor="let res of courseResponse">                      
+                            <td *ngIf="roleTag == 'teacher' || roleTag == 'Teacher'" style=" text-decoration: underline;" (click)="getenrolls(res)">{{res.Id}}</td>                             <!-- <td>{{res.key}}:{{res.value}}</td> -->
                             <td>{{res.Id}}</td>
                             <td>{{res.Title}}</td>
                             <td>{{res.Subject}}</td>
-                            <td>{{res.GradeLevel}}</td>
+                            <td>{{res.GradeLevel}}</td> 
                             <td
                                 *ngIf="roleTag == 'student' || roleTag == 'Student' || roleTag == 'teacher' || roleTag == 'Teacher'">
                                 <button style="color:black;background-color:transparent;

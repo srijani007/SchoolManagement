@@ -45,6 +45,7 @@ this.router.navigate(['/createuser'])
     
 localStorage.removeItem('addusertag')
 localStorage.removeItem('addcoursetag')
+this.userServices.updateSite.next(true);
     this.router.navigate(['/admin'])
   }
 }

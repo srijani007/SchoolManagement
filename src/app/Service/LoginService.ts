@@ -9,10 +9,10 @@ import { LoginCreds } from "../Model/LoginDetails";
 
 
 export class LoginService{
-    baseUrl ='https://localhost:7029/Authentication/SignIn';
-    //Authentication/SignIn'
+  baseUrl ='https://localhost:7029/Authentication/SignIn';
+   //baseUrl='https://userenrollment20220920194142.azurewebsites.net/Authentication/SignIn'
     
-    constructor(private http: HttpClient){}
+   constructor(private http: HttpClient){}
     httpheader = new HttpHeaders(
         {
         'Authorization' : 'Bearer ' + localStorage.getItem("Token"),

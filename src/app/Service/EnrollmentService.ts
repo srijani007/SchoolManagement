@@ -9,6 +9,7 @@ import { detailsbyCourseId, detailsbyUserId } from "../Model/UserActions";
 
 export class EnrollmentService{
     enrollmentUrl ='https://localhost:7029/Enrollment/';
+    //enrollmentUrl='https://userenrollment20220920194142.azurewebsites.net/Enrollment/'
    
 
     

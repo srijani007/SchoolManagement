@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import {createUser,createCourse, detailsbyCourseId, detailsbyUserId, detailsbyUserName} from "../Model/UserActions"
 @Injectable({
     providedIn: 'root'
@@ -8,9 +8,12 @@ import {createUser,createCourse, detailsbyCourseId, detailsbyUserId, detailsbyUs
 
 export class UserService{
     adminUrl ='https://localhost:7029/Admin/';
-    courseUrl='https://localhost:7029/Course/';
-    enrollmentUrl='https://localhost:7029/Enrollment/';
-    
+    //adminUrl='https://userenrollment20220920194142.azurewebsites.net/Admin/'
+      courseUrl='https://localhost:7029/Course/';
+   //courseUrl='https://userenrollment20220920194142.azurewebsites.net/Course/'
+  // enrollmentUrl='https://localhost:7029/Enrollment/';
+   // enrollmentUrl='https://userenrollment20220920194142.azurewebsites.net/Enrollment/'
+    public updateSite = new BehaviorSubject<any>(false);
     constructor(private http: HttpClient){}
    
     httpheader = new HttpHeaders(
@@ -30,7 +33,7 @@ getAllCourses(): Observable<createCourse[]> {
 }
 
  CreateUsers(users : createUser): Observable<createUser[]>{
-    return this.http.post<createUser[]>(this.adminUrl + 'CreateUser',users,{headers : this.httpheader});
+    return this.http.post<createUser[]>(this.adminUrl + 'CreateUser',users)//,{headers : this.httpheader});
  }  
 
  CreateCourse(course : createCourse): Observable<createCourse[]>{

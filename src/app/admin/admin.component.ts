@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { UserService } from '../Service/UserService';
+import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +12,7 @@ export class AdminComponent implements OnInit {
   adminTag:any=localStorage.getItem('adminTag')
   createusertag:any='false'
   createcoursetag:any='false'
-  constructor(private router:Router) { }
+  constructor(private router:Router, private userService:UserService) { }
 
   ngOnInit(): void {
   
@@ -21,6 +23,7 @@ export class AdminComponent implements OnInit {
     this.createcoursetag='false'
     localStorage.setItem('addusertag',this.createusertag)
     localStorage.setItem('addcoursetag',this.createcoursetag)
+    this.userService.updateSite.next(true);
     this.router.navigate(['/user'])
   }
   coursePage(){
@@ -29,6 +32,7 @@ export class AdminComponent implements OnInit {
     this.createcoursetag='true'
     localStorage.setItem('addusertag',this.createusertag)
     localStorage.setItem('addcoursetag',this.createcoursetag)
+    this.userService.updateSite.next(true);
     this.router.navigate(['/course'])
   }
 }

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/3e8f8613-cefe-4afb-9ab3-c320a64dc673/AppServices/subscriptions/3e8f8613-cefe-4afb-9ab3-c320a64dc673/resourceGroups/UserEnrollmentResourceGroup/providers/Microsoft.Web/sites/UserEnrollmentAppService",
+    "appService.deploySubpath": "dist\\SchoolManagement"
+}

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
+import { UserService } from './Service/UserService';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +10,26 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'SchoolManagement';
-  loginDetails = localStorage.getItem('userrole')
- userRole=localStorage.getItem('userrole')
- addUserTag=localStorage.getItem('addusertag')
- addCourseTag=localStorage.getItem('addcoursetag')
-userName=localStorage.getItem('userName')
-
-constructor(private route:Router){
+  private UnsubcsribeAll = new Subject();
+  loginDetails = ''
+ userRole=''
+ addUserTag=''
+ addCourseTag=''
+userName=''
+userid=0
+constructor(private route:Router, private userService : UserService){
   
+}
+ngOnInit(){
+  this.userService.updateSite.pipe(takeUntil(this.UnsubcsribeAll)).subscribe((r: any) => {
+  this.loginDetails = localStorage.getItem('userrole') || ''
+  this.userRole=localStorage.getItem('userrole') || ''
+  this.addUserTag=localStorage.getItem('addusertag') || ''
+  this.addCourseTag=localStorage.getItem('addcoursetag') || ''
+ this.userName=localStorage.getItem('userName') || ''
+ this.userid=parseInt(sessionStorage.getItem('userId') || '0')
+ console.log(this.userid)
+  });
 }
   Logout(){
 localStorage.removeItem('userrole')
@@ -31,11 +45,8 @@ localStorage.removeItem('userId')
 localStorage.removeItem('coursedescription')
 localStorage.removeItem('coursesubjectarea')
 localStorage.removeItem('Token')
+this.userService.updateSite.next(true);
 this.route.navigate(['']);
-  }
-
-  reloadPage(): void {
-    window.location.reload();
   }
 }
 

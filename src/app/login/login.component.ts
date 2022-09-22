@@ -4,7 +4,8 @@ import {LoginCreds} from '../Model/LoginDetails';
 import { LoginService } from '../Service/LoginService';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserService } from '../Service/UserService';
-import { detailsbyUserName } from '../Model/UserActions';
+import { detailsbyUserId, detailsbyUserName } from '../Model/UserActions';
+import { EnrollmentService } from '../Service/EnrollmentService';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,9 +32,15 @@ log = [];
 detailsbyUserName:detailsbyUserName={
   userName:''
 }
+idUser:detailsbyUserId={
+  id:0
+}
+courseResponse:any
+
 userdetails:any
   constructor( private router :Router, private siginservice:LoginService,
-    private jwtHelper:JwtHelperService,private userServices:UserService) { }
+    private jwtHelper:JwtHelperService,private userServices:UserService,
+    private enrollmentService:EnrollmentService) { }
 
   ngOnInit(): void {
   }
@@ -49,15 +56,24 @@ userdetails:any
       console.log(this.userRole)
       console.log(this.username) 
       this.detailsbyUserName.userName=this.username
+      console.log("username")
       console.log(this.detailsbyUserName)
+      console.log("name")
       this.userServices.getDetailsbyUserName(this.detailsbyUserName).subscribe(
         response=>{
+          console.log("name1")
           this.userdetails=response
           console.log(this.userdetails)
-          localStorage.setItem('userId',this.userdetails[0].id)
+          sessionStorage.setItem('userId',this.userdetails[0].id)
+          this.userServices.updateSite.next(true);
+          console.log("iddetails")
+          console.log(this.userdetails[0].id)
+          console.log("userid in login")
+          console.log(localStorage.getItem('userId'))
+          
         }
-      )    
-      this.userRole=localStorage.getItem('userrole')     
+      )     
+      this.userRole=localStorage.getItem('userrole')  
       this.isLoginFailed = false;
       this.isLoggedIn = true;
       if(this.userRole != ''){       
@@ -65,6 +81,7 @@ userdetails:any
       {
         this.userTag=true;
         localStorage.setItem('adminTag',this.userTag)
+        this.userServices.updateSite.next(true);
         this.router.navigate(['/admin']);
         
       }
@@ -73,12 +90,18 @@ userdetails:any
        
         this.userTag=true;
         localStorage.setItem('teacherTag',this.userTag)
-        this.router.navigate(['/enrolled'])
+        this.userServices.updateSite.next(true);
+        this.router.navigate(['/enrolled']).then(() => {
+          window.location.reload();
+        });
         console.log("teacher")
       }
-      else
-      {           
-        this.router.navigate(['/enrolled'])
+      else if(this.userRole.toLowerCase() == 'student')
+      { 
+          
+              this.router.navigate(['/enrolled']).then(() => {
+                window.location.reload();
+              });
       }
     }
     else{
@@ -103,9 +126,10 @@ userdetails:any
     localStorage.setItem('Token',this.res.token)
     localStorage.setItem('userrole',this.userRole)
     localStorage.setItem('username',this.username)
-    console.log(localStorage.getItem('userrole'))
-    console.log(localStorage.getItem('username'))
+    this.userServices.updateSite.next(true);
+    
   }
 
+  
 }
 

@@ -7,8 +7,7 @@
     <a href="#" class="navbar-brand">School Management</a>
     
     <ul class="navbar-nav ">
-      <li class="nav-item active" *ngIf="loginDetails == null">
-        
+      <li class="nav-item active" *ngIf="loginDetails == ''">        
         <a href='login' class="nav-link" routerLink="login">Login</a>
       </li>
     </ul>
@@ -36,5 +35,7 @@
 </nav>
 
   
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
+</div>

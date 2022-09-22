@@ -31,6 +31,7 @@ courses:createCourse[]=[]
   back(){    
     localStorage.removeItem('addusertag')
     localStorage.removeItem('addcoursetag')
+    this.userServices.updateSite.next(true);
     console.log(this.roleTag)
     if(this.roleTag== 'Admin' || this.roleTag == 'admin')
       { 
@@ -49,6 +50,7 @@ this.router.navigate(['/createcourse'])
   onEnroll(course:any){
     localStorage.setItem('courseid',course.id)
 localStorage.setItem('courseName',course.title)
+this.userServices.updateSite.next(true);
 this.router.navigate(['/enroll'])
 
   }
